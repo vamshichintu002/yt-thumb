@@ -5,35 +5,42 @@ import { cn } from '../lib/utils';
 
 const plans = [
   {
-    name: "STARTER",
-    price: "9.99",
-    yearlyPrice: "7.99",
+    name: "BASIC",
+    price: "15",
+    yearlyPrice: "10",
     period: "per month",
+    credits: "250 credits",
     features: [
-      "100 AI thumbnails per month",
-      "Basic customization options",
-      "48-hour support response time",
-      "YouTube format support",
-      "Community access",
+      "Up to 25 images per month",
+      "Text to thumbnail",
+      "Generate thumbnail from YouTube",
+      "Generate thumbnail using your face",
+      "Generate thumbnail with face and YouTube image reference",
+      "Thumbnail enhancer",
+      "All generations stay private",
     ],
-    description: "Perfect for content creators just starting out",
-    buttonText: "Start Free Trial",
+    description: "Perfect for content creators getting started",
+    buttonText: "Get Started",
     href: "#",
     isPopular: false,
   },
   {
-    name: "CREATOR",
-    price: "24.99",
-    yearlyPrice: "19.99",
+    name: "PRO",
+    price: "25",
+    yearlyPrice: "20",
     period: "per month",
+    credits: "500 credits",
     features: [
-      "Unlimited AI thumbnails",
-      "Advanced customization",
-      "24-hour support response time",
-      "All platform formats",
-      "Priority support",
-      "Custom branding",
-      "Analytics dashboard",
+      "Up to 50 images per month",
+      "Access to all models",
+      "Text to thumbnail",
+      "Generate thumbnail from YouTube",
+      "Generate thumbnail using your face",
+      "Generate thumbnail with face and YouTube image reference",
+      "Thumbnail enhancer",
+      "Generate TOP YouTuber channels style thumbnail",
+      "Generate TOP YouTuber channels style with your face",
+      "All generations stay private",
     ],
     description: "Best for professional content creators",
     buttonText: "Get Started",
@@ -41,29 +48,27 @@ const plans = [
     isPopular: true,
   },
   {
-    name: "AGENCY",
-    price: "79.99",
-    yearlyPrice: "63.99",
-    period: "per month",
+    name: "CREDIT PACKS",
+    price: "10",
+    yearlyPrice: "10",
+    period: "one-time",
+    credits: "250 credits",
     features: [
-      "Everything in Creator",
-      "Multiple team members",
-      "1-hour support response time",
-      "Custom API access",
-      "Bulk generation",
-      "White-label solution",
-      "Advanced analytics",
-      "Dedicated account manager",
+      "Purchase only credits after exhausting monthly credits",
+      "10$ = 250 credits",
+      "20$ = 500 credits",
+      "Use anytime",
+      "Never expires",
     ],
-    description: "For teams and agencies managing multiple channels",
-    buttonText: "Contact Sales",
+    description: "Additional credits when you need them",
+    buttonText: "Buy Credits",
     href: "#",
     isPopular: false,
   },
 ];
 
 export function Pricing() {
-  const [isYearly, setIsYearly] = useState(false);
+  const [isYearly, setIsYearly] = useState(true);
 
   return (
     <section className="py-24 relative">
@@ -169,7 +174,12 @@ export function Pricing() {
                   <span className="text-muted-foreground">/{plan.period}</span>
                 </div>
                 <p className="text-sm text-muted-foreground mt-2">
-                  {isYearly ? "Billed annually" : "Billed monthly"}
+                  {plan.credits}
+                  {plan.period !== "one-time" && (
+                    <span className="block">
+                      {isYearly ? "Billed annually" : "Billed monthly"}
+                    </span>
+                  )}
                 </p>
               </div>
 
